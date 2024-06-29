@@ -39,7 +39,7 @@ public class MenuController {
                     *   1- Search book by title                   *
                     *   2- List registered books                  *
                     *   3- List registered authors                *
-                    *   4- List living authors in a given year    *
+                    *   4- List authors alive in a specific year  *
                     *   5- List books in a specific language      *
                     *                                             *
                     *   0- Exit                                   *
@@ -67,7 +67,7 @@ public class MenuController {
                     listRegisteredAuthors();
                     break;
                 case 4:
-                    listLivingAuthorsInAGivenYear();
+                    listAuthorsAliveInASpecificYear();
                     break;
                 case 5:
                     listBooksInASpecificLanguage();
@@ -114,7 +114,7 @@ public class MenuController {
         registeredAuthors.forEach(System.out::println);
     }
 
-    private void listLivingAuthorsInAGivenYear() {
+    private void listAuthorsAliveInASpecificYear() {
         try {
             System.out.println("Enter a year: ");
             var year = scanner.nextInt();
@@ -152,6 +152,7 @@ public class MenuController {
                     """;
 
         System.out.println(languageMenu);
+        System.out.print("Select a language: ");
         var language = scanner.nextLine();
 
         List<Book> books = bookRepository.findByLanguage(language);
